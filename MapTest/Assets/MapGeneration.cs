@@ -17,7 +17,7 @@ public class MapGeneration : MonoBehaviour {
 	void Start () {
 		UnityEngine.Debug.Log("test");
 
-		createMap ();
+		createMapString ();
 	}
 	
 	// Update is called once per frame
@@ -25,7 +25,7 @@ public class MapGeneration : MonoBehaviour {
 	
 	}
 
-	void createMap() {
+	void createMapString() {
 		mapDefinition.Clear ();
 
 		for (int i = 0; i < (rowSize * numberRows); i ++) {
@@ -63,5 +63,9 @@ public class MapGeneration : MonoBehaviour {
 		} else {
 			return "";
 		}
+	}
+
+	void generateMap() {
+
 	}
 }
