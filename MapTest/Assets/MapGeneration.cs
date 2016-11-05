@@ -10,6 +10,11 @@ public class MapGeneration : MonoBehaviour {
 	public float mountainChance = .1f;
 
 	public string mapString;
+	public GameObject mapParentObject;
+
+	public GameObject openTilePrefab;
+	public GameObject waterTilePrefab;
+	public GameObject mountainTilePrefab;
 
 	public ArrayList mapDefinition = new ArrayList();
 
@@ -18,6 +23,8 @@ public class MapGeneration : MonoBehaviour {
 		UnityEngine.Debug.Log("test");
 
 		createMapString ();
+
+		generateMap ();
 	}
 	
 	// Update is called once per frame
@@ -66,6 +73,29 @@ public class MapGeneration : MonoBehaviour {
 	}
 
 	void generateMap() {
+		float counter = 0;
+		float posx = 0;
+		float posy = 0;
 
+		foreach (char c in mapDefinition) {
+			
+
+			GameObject tilePrefab = openTilePrefab;
+
+			if (c == 'w') {
+				tilePrefab = waterTilePrefab;
+			}
+
+			if (posx > rowSize) {
+				posx = 0;
+				posy += 1;
+			}
+			GameObject newTile = GameObject.Instantiate (tilePrefab);
+			newTile.transform.parent = mapParentObject.transform;
+			newTile.transform.position = new Vector3 (posx, posy, 0);
+
+			posx += 1;
+			counter += 1;
+		}
 	}
 }
