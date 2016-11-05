@@ -25,7 +25,11 @@ public class MapGeneration : MonoBehaviour {
 	void Start () {
 		UnityEngine.Debug.Log("test");
 
-		createMapString ();
+		mapString = PlayerPrefs.GetString ("MapDefinitionStr");
+
+		if (mapString == null) {
+			createMapString ();
+		}
 
 		generateMap ();
 	}
@@ -48,11 +52,11 @@ public class MapGeneration : MonoBehaviour {
 
 			//check for adjacent tiles
 
-			if (getTileStringatPosition (i - 1) == "w") {
+			if (getTileStringatPosition (i - 1) == 'w') {
 				tmpWaterChance = tmpWaterChance +waterAdjacentBonus;
 			}
 
-			if (getTileStringatPosition (i - rowSize) == "w") {
+			if (getTileStringatPosition (i - rowSize) == 'w') {
 				tmpWaterChance = tmpWaterChance  +waterAdjacentBonus;
 			}
 
@@ -64,14 +68,17 @@ public class MapGeneration : MonoBehaviour {
 
 			mapDefinition.Add (c);
 			mapString = mapString + c;
+
+			PlayerPrefs.SetString ("MapDefinitionStr", mapString);
 		}
 	}
 
-	string getTileStringatPosition(int position) {
+	char getTileStringatPosition(int position) {
 		if (position > 0) {
-			return mapDefinition [position].ToString();
+			//return mapDefinition [position].ToString();
+			return mapString[position];
 		} else {
-			return "";
+			return ' ';
 		}
 	}
 
@@ -82,7 +89,7 @@ public class MapGeneration : MonoBehaviour {
 		float posx = 0;
 		float posz = 0;
 
-		foreach (char c in mapDefinition) {
+		foreach (char c in mapString) {
 			
 
 			GameObject tilePrefab = openTilePrefab;
