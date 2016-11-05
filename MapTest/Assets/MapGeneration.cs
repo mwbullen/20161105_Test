@@ -80,7 +80,7 @@ public class MapGeneration : MonoBehaviour {
 
 		float counter = 0;
 		float posx = 0;
-		float posy = 0;
+		float posz = 0;
 
 		foreach (char c in mapDefinition) {
 			
@@ -93,11 +93,12 @@ public class MapGeneration : MonoBehaviour {
 
 			if (posx > rowSize) {
 				posx = 0;
-				posy += 1;
+				posz += 1;
 			}
 			GameObject newTile = GameObject.Instantiate (tilePrefab);
 			newTile.transform.parent = mapParentObject.transform;
-			newTile.transform.position = new Vector3 (posx, posy, 0);
+			newTile.transform.Rotate(new Vector3 (90, 0, 0));
+			newTile.transform.position = new Vector3 (posx, 0, posz);
 
 			posx += 1;
 			counter += 1;
