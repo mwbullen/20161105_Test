@@ -7,6 +7,8 @@ public class MapGeneration : MonoBehaviour {
 	public int numberRows = 10;
 
 	public float waterChance = .1f;
+	public float waterAdjacentBonus;
+
 	public float mountainChance = .1f;
 
 	public string mapString;
@@ -15,6 +17,7 @@ public class MapGeneration : MonoBehaviour {
 	public GameObject openTilePrefab;
 	public GameObject waterTilePrefab;
 	public GameObject mountainTilePrefab;
+	public GameObject treeTilePrefab;
 
 	public ArrayList mapDefinition = new ArrayList();
 
@@ -35,7 +38,7 @@ public class MapGeneration : MonoBehaviour {
 	void createMapString() {
 		mapDefinition.Clear ();
 
-		for (int i = 0; i < (rowSize * numberRows); i ++) {
+		for (int i = 0; i < ((rowSize * numberRows)-1); i ++) {
 			char c = '_';
 
 			//check for water
@@ -46,11 +49,11 @@ public class MapGeneration : MonoBehaviour {
 			//check for adjacent tiles
 
 			if (getTileStringatPosition (i - 1) == "w") {
-				tmpWaterChance = tmpWaterChance * 2;
+				tmpWaterChance = tmpWaterChance +waterAdjacentBonus;
 			}
 
 			if (getTileStringatPosition (i - rowSize) == "w") {
-				tmpWaterChance = tmpWaterChance * 2;
+				tmpWaterChance = tmpWaterChance  +waterAdjacentBonus;
 			}
 
 			//UnityEngine.Debug.Log(tileCheckF);
@@ -73,6 +76,8 @@ public class MapGeneration : MonoBehaviour {
 	}
 
 	void generateMap() {
+
+
 		float counter = 0;
 		float posx = 0;
 		float posy = 0;
@@ -98,4 +103,6 @@ public class MapGeneration : MonoBehaviour {
 			counter += 1;
 		}
 	}
+
+
 }
