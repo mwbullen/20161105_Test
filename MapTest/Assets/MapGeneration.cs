@@ -12,18 +12,20 @@ public class MapGeneration : MonoBehaviour {
 	public float mountainChance = .1f;
 
 	public string mapString;
-	public GameObject mapParentObject;
+	public GameObject mapParentPrefab;
+
+	GameObject mapParentObject;
 
 	//public GameObject openTilePrefab;
 	public GameObject waterTilePrefab;
 	public GameObject mountainTilePrefab;
 	public GameObject treeTilePrefab;
 
-	public ArrayList mapDefinition = new ArrayList();
+	//public ArrayList mapDefinition = new ArrayList();
 
 	// Use this for initialization
 	void Start () {
-		UnityEngine.Debug.Log("test");
+		//UnityEngine.Debug.Log("test");
 
 		mapString = PlayerPrefs.GetString ("MapDefinitionStr");
 
@@ -39,8 +41,14 @@ public class MapGeneration : MonoBehaviour {
 	
 	}
 
+	void refreshMap() {
+		createMapString ();
+		generateMap ();
+	}
+
 	void createMapString() {
-		mapDefinition.Clear ();
+		//mapDefinition.Clear ();
+		mapString = "";
 
 		for (int i = 0; i < ((rowSize * numberRows)-1); i ++) {
 			char c = '_';
@@ -66,7 +74,7 @@ public class MapGeneration : MonoBehaviour {
 				c = 'w';
 			} 
 
-			mapDefinition.Add (c);
+			//mapDefinition.Add (c);
 			mapString = mapString + c;
 
 			PlayerPrefs.SetString ("MapDefinitionStr", mapString);
@@ -83,6 +91,12 @@ public class MapGeneration : MonoBehaviour {
 	}
 
 	void generateMap() {
+		if (mapParentObject != null) {
+			GameObject.Destroy (mapParentObject);
+		}
+
+		mapParentObject = GameObject.Instantiate (mapParentPrefab);
+
 		float counter = 0;
 		float posx = 0;
 		float posz = 0;
