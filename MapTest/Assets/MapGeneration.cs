@@ -14,7 +14,7 @@ public class MapGeneration : MonoBehaviour {
 	public string mapString;
 	public GameObject mapParentObject;
 
-	public GameObject openTilePrefab;
+	//public GameObject openTilePrefab;
 	public GameObject waterTilePrefab;
 	public GameObject mountainTilePrefab;
 	public GameObject treeTilePrefab;
@@ -83,30 +83,31 @@ public class MapGeneration : MonoBehaviour {
 	}
 
 	void generateMap() {
-
-
 		float counter = 0;
 		float posx = 0;
 		float posz = 0;
 
 		foreach (char c in mapString) {
-			
+			GameObject tilePrefab = null;
 
-			GameObject tilePrefab = openTilePrefab;
-
+			//read string and assign prefab
 			if (c == 'w') {
 				tilePrefab = waterTilePrefab;
 			}
 
+			//wrap row if row limit reached
 			if (posx > rowSize) {
 				posx = 0;
 				posz += 1;
 			}
-			GameObject newTile = GameObject.Instantiate (tilePrefab);
-			newTile.transform.parent = mapParentObject.transform;
-			newTile.transform.Rotate(new Vector3 (90, 0, 0));
-			newTile.transform.position = new Vector3 (posx, 0, posz);
 
+			if (tilePrefab != null) {
+				GameObject newTile = GameObject.Instantiate (tilePrefab);
+				newTile.transform.parent = mapParentObject.transform;
+				newTile.transform.Rotate (new Vector3 (90, 0, 0));
+				newTile.transform.position = new Vector3 (posx, 0, posz);
+
+			}
 			posx += 1;
 			counter += 1;
 		}
