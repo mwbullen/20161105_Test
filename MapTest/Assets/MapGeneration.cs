@@ -6,10 +6,16 @@ public class MapGeneration : MonoBehaviour {
 	public int rowSize = 200;
 	public int numberRows = 10;
 
-	public float waterChance = .1f;
-	public float waterAdjacentBonus;
+	public int waterChanceBase = 5;
+	public int waterAdjacentBonus = 20;
 
-	public float mountainChance = .1f;
+	public int mtnChanceBase = 5;
+	public int mtnAdjacentBonus = 20;
+
+	public int treeChanceBase = 5;
+	public int treeAdjacentBonus = 20;
+
+	public int openChanceBase = 50;
 
 	public string mapString;
 	public GameObject mapParentPrefab;
@@ -46,12 +52,77 @@ public class MapGeneration : MonoBehaviour {
 		generateMap ();
 	}
 
+	char getRandomMapCharforPos(int i) {
+		int nextInterval = 0;
+
+		//water
+		int[] waterChanceArray = { nextInterval, waterChanceBase };
+
+		if (getTileStringatPosition (i - 1) == 'w') {
+			waterChanceArray[1] = waterChanceArray[1] +waterAdjacentBonus;
+		}
+
+		if (getTileStringatPosition (i - rowSize) == 'w') {
+			waterChanceArray[1] = waterChanceArray[1]  +waterAdjacentBonus;
+		}
+
+		nextInterval = waterChanceArray[1] + 1;
+
+		//tree
+		int[] treeChanceArray = {nextInterval, nextInterval + treeChanceBase};
+
+		if (getTileStringatPosition (i - 1) == 'T') {
+				treeChanceArray[1] = treeChanceArray[1] +treeAdjacentBonus;
+		}
+
+		if (getTileStringatPosition (i - rowSize) == 'T') {
+				treeChanceArray[1] = treeChanceArray[1]  +treeAdjacentBonus;
+		}
+
+		nextInterval = treeChanceArray[1] + 1;
+
+		//mountain
+		int[] mtnChanceArray = {nextInterval, nextInterval + mtnChanceBase};
+
+		if (getTileStringatPosition (i - 1) == 'm') {
+			mtnChanceArray[1] = mtnChanceArray[1] +mtnAdjacentBonus;
+		}
+
+		if (getTileStringatPosition (i - rowSize) == 'm') {
+			mtnChanceArray[1] = mtnChanceArray[1]  +mtnAdjacentBonus;
+		}
+
+		nextInterval = mtnChanceArray[1] + 1;
+
+		//open 
+
+		int totalRange = nextInterval + openChanceBase;
+
+		//generate random 
+		int tileCheckInt = Random.Range (0, totalRange);
+
+		if (waterChanceArray [0] <= tileCheckInt && tileCheckInt <= waterChanceArray [1]) {
+			//water tile
+			return 'w';
+		} else if (treeChanceArray [0] <= tileCheckInt && tileCheckInt <= treeChanceArray [1]) {
+			//tree tile
+			return 'T';
+		} else if (mtnChanceArray [0] <= tileCheckInt && tileCheckInt <= mtnChanceArray [1]) {
+			//mountain tile
+			return 'm';
+		} else {
+			//open (no) tile
+			return '_';
+		}
+
+	}
+
 	void createMapString() {
 		//mapDefinition.Clear ();
 		mapString = "";
 
 		for (int i = 0; i < ((rowSize * numberRows)-1); i ++) {
-			char c = '_';
+			/*char c = '_';
 
 			//check for water
 			float tileCheckF = Random.Range (0f, 1f);
@@ -68,13 +139,12 @@ public class MapGeneration : MonoBehaviour {
 				tmpWaterChance = tmpWaterChance  +waterAdjacentBonus;
 			}
 
-			//UnityEngine.Debug.Log(tileCheckF);
 			if (tileCheckF < tmpWaterChance) {
-				//water tile
 				c = 'w';
 			} 
+			*/
 
-			//mapDefinition.Add (c);
+			char c = getRandomMapCharforPos (i);
 			mapString = mapString + c;
 
 			PlayerPrefs.SetString ("MapDefinitionStr", mapString);
@@ -107,6 +177,10 @@ public class MapGeneration : MonoBehaviour {
 			//read string and assign prefab
 			if (c == 'w') {
 				tilePrefab = waterTilePrefab;
+			} else if (c == 'T') {
+				tilePrefab = treeTilePrefab;
+			} else if (c == 'm') {
+				tilePrefab = mountainTilePrefab;
 			}
 
 			//wrap row if row limit reached
