@@ -642,9 +642,9 @@ RectTransform:
   - {fileID: 627259700}
   m_Father: {fileID: 469106388}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -201.2, y: -142.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 210.8, y: 72.5}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1646608503
@@ -778,7 +778,7 @@ MonoBehaviour:
   mtnChanceBase: 1
   mtnAdjacentBonus: 75
   treeChanceBase: 5
-  treeAdjacentBonus: 40
+  treeAdjacentBonus: 85
   openChanceBase: 100
   mapString: 
   mapParentPrefab: {fileID: 130786, guid: 91a90682aea8e41db96c417d554dd507, type: 2}
