@@ -510,9 +510,10 @@ GameObject:
   - 23: {fileID: 1261522159}
   - 195: {fileID: 1261522163}
   - 114: {fileID: 1261522164}
-  m_Layer: 0
+  - 54: {fileID: 1261522165}
+  m_Layer: 2
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -556,7 +557,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 7.03
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1261522161
 MeshFilter:
@@ -572,7 +573,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1261522158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.131105, y: 0.761, z: 38.112286}
+  m_LocalPosition: {x: 10.87, y: 0.761, z: 2.21}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -609,6 +610,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9af9d8e96cb5cee44a779f1fb134068f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &1261522165
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1261522158}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1646608501
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,6 +801,8 @@ MonoBehaviour:
   waterTilePrefab: {fileID: 102462, guid: 8d0a1b84a6f0448df8364021151044fd, type: 2}
   mountainTilePrefab: {fileID: 102462, guid: aaf4ae12926e44ea6b7ca7417fd6cf93, type: 2}
   treeTilePrefab: {fileID: 102462, guid: 757929994970d410f989baebb1cb31ab, type: 2}
+  FogTilePrefab: {fileID: 1000011511190140, guid: 612440473de0457479a4c269690b4a30,
+    type: 2}
 --- !u!4 &1692179635
 Transform:
   m_ObjectHideFlags: 0
