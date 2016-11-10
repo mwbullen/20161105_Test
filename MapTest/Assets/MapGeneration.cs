@@ -17,8 +17,6 @@ public class MapGeneration : MonoBehaviour {
 
 	public int openChanceBase = 50;
 
-
-
 	public string mapString;
 	public GameObject mapParentPrefab;
 
@@ -28,8 +26,6 @@ public class MapGeneration : MonoBehaviour {
 	public GameObject waterTilePrefab;
 	public GameObject mountainTilePrefab;
 	public GameObject treeTilePrefab;
-
-	public GameObject FogTilePrefab;
 
 	//public ArrayList mapDefinition = new ArrayList();
 
@@ -200,11 +196,6 @@ public class MapGeneration : MonoBehaviour {
 				newTile.transform.position = new Vector3 (posx, 0, posz);
 
 			}
-
-			GameObject newFogTile = GameObject.Instantiate (FogTilePrefab);
-			newFogTile.transform.Rotate (new Vector3 (90, 0, 0));
-			newFogTile.transform.position = new Vector3 (posx, 1.4f, posz);
-
 			posx += 1;
 			counter += 1;
 		}

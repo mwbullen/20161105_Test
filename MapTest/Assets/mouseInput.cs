@@ -19,12 +19,12 @@ public class mouseInput : MonoBehaviour {
 			RaycastHit r = new RaycastHit();
 			Ray cameraRay = Camera.main.ScreenPointToRay (Input.mousePosition);
 
-			if (Physics.Raycast (cameraRay, out r)) {
-				if (r.collider.gameObject == terrain) {
-					//Debug.Log (r.point);
+			Physics.Raycast (cameraRay, out r);
 
-					character.SendMessage ("NavtoPoint", r.point);
-				}
+			if (r.collider.gameObject == terrain) {
+				//Debug.Log (r.point);
+
+				character.SendMessage ("NavtoPoint", r.point);
 			}
 		}
 	}
