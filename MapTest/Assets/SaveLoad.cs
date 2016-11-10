@@ -23,9 +23,7 @@ public class SaveLoad : MonoBehaviour {
 		BinaryFormatter bf = new BinaryFormatter ();
 		FileStream fs = File.Create (Application.persistentDataPath + "/" + "savegame.tst");
 
-		foreach (GameObject g in  GameObject.FindGameObjectsWithTag("Character")) {
-			
-
+		foreach (GameObject g in  GameObject.FindGameObjectsWithTag("Character")) {			
 			bf.Serialize(fs,  null);
 		}
 

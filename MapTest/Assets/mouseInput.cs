@@ -5,6 +5,7 @@ public class mouseInput : MonoBehaviour {
 	GameObject terrain;
 
 	public GameObject character;
+	public GameObject Tribe;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,7 @@ public class mouseInput : MonoBehaviour {
 			Ray cameraRay = Camera.main.ScreenPointToRay (Input.mousePosition);
 
 			Physics.Raycast (cameraRay, out r);
+
 
 			if (r.collider.gameObject == terrain) {
 				//Debug.Log (r.point);
