@@ -4,7 +4,6 @@ using System.Collections;
 public class mouseInput : MonoBehaviour {
 	GameObject terrain;
 
-	public GameObject character;
 	public GameObject Tribe;
 
 	// Use this for initialization
@@ -22,11 +21,10 @@ public class mouseInput : MonoBehaviour {
 
 			Physics.Raycast (cameraRay, out r);
 
-
-			if (r.collider.gameObject == terrain) {
+			if (r.collider.gameObject.tag == "Tile") {
 				//Debug.Log (r.point);
 
-				character.SendMessage ("NavtoPoint", r.point);
+				Tribe.SendMessage ("MovetoTile", r.collider.gameObject);
 			}
 		}
 	}

@@ -22,7 +22,7 @@ public class MapGeneration : MonoBehaviour {
 
 	GameObject mapParentObject;
 
-	//public GameObject openTilePrefab;
+	public GameObject openTilePrefab;
 	public GameObject waterTilePrefab;
 	public GameObject mountainTilePrefab;
 	public GameObject treeTilePrefab;
@@ -175,7 +175,9 @@ public class MapGeneration : MonoBehaviour {
 			GameObject tilePrefab = null;
 
 			//read string and assign prefab
-			if (c == 'w') {
+			if (c == '_') {
+				tilePrefab = openTilePrefab;
+			} else if (c == 'w') {
 				tilePrefab = waterTilePrefab;
 			} else if (c == 'T') {
 				tilePrefab = treeTilePrefab;

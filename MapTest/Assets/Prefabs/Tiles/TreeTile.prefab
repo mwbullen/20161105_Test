@@ -12,7 +12,6 @@ GameObject:
   - 64: {fileID: 6401704}
   - 23: {fileID: 2363714}
   - 222: {fileID: 22265516}
-  - 208: {fileID: 20808752}
   m_Layer: 0
   m_Name: TreeTile
   m_TagString: Untagged
@@ -144,21 +143,6 @@ Tree:
   m_GameObject: {fileID: 115156}
   m_SpeedTreeWindAsset: {fileID: 0}
   m_TreeData: {fileID: 11482708, guid: 8ff14d29c6800924c96f4bf0ca0d7854, type: 2}
---- !u!208 &20808752
-NavMeshObstacle:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102462}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.075, y: 0.075, z: 0.00001}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!222 &22265516
 CanvasRenderer:
   m_ObjectHideFlags: 1
