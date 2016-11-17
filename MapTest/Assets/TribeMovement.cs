@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using HutongGames.PlayMaker;
 
 public class TribeMovement : MonoBehaviour {
-
-
+	
 	// Use this for initialization
 	void Start () {
 	
@@ -13,9 +13,12 @@ public class TribeMovement : MonoBehaviour {
 	void Update () {
 	}
 
-	public void MovetoTile(GameObject targetTile ) {
-		
-	
+	public void MovetoTile(GameObject targetTile ) {		
+		PlayMakerFSM movementFsm = gameObject.GetComponent<PlayMakerFSM> ();
+
+		movementFsm.FsmVariables.GetFsmGameObject("targetTile").Value = targetTile;
+		movementFsm.SendEvent ("Move to Tile");
+
 
 	}
 }

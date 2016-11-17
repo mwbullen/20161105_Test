@@ -25,6 +25,7 @@ public class mouseInput : MonoBehaviour {
 				//Debug.Log (r.point);
 
 				Tribe.SendMessage ("MovetoTile", r.collider.gameObject);
+				Debug.Log ("Click");
 			}
 		}
 	}
