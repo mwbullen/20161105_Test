@@ -39,7 +39,7 @@ public class MapGeneration : MonoBehaviour {
 			createMapString ();
 		}
 
-		/generateMap ();
+		//generateMap ();
 	}
 	
 	// Update is called once per frame

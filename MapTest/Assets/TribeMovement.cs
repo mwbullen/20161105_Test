@@ -3,7 +3,9 @@ using System.Collections;
 using HutongGames.PlayMaker;
 
 public class TribeMovement : MonoBehaviour {
-	
+
+	public GameObject currentTile;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -19,6 +21,6 @@ public class TribeMovement : MonoBehaviour {
 		movementFsm.FsmVariables.GetFsmGameObject("targetTile").Value = targetTile;
 		movementFsm.SendEvent ("Move to Tile");
 
-
+		currentTile = targetTile;
 	}
 }
