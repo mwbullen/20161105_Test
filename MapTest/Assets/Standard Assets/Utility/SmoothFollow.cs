@@ -57,5 +57,9 @@ namespace UnityStandardAssets.Utility
 			// Always look at the target
 			transform.LookAt(target);
 		}
+
+		public void SetFollowTarget(GameObject newTarget) {
+			target = newTarget.transform;
+		}
 	}
 }

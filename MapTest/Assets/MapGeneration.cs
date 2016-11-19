@@ -42,6 +42,9 @@ public class MapGeneration : MonoBehaviour {
 			createMapString ();
 		}
 
+
+		gameObject.GetComponent<GameInit> ().CreateTribe ();
+
 		/*for (int i = 1; i < 500; i++) {
 			DisplayTile (i);
 		}
@@ -167,12 +170,13 @@ public class MapGeneration : MonoBehaviour {
 		}
 	}
 
-	public void DisplayTile(int tileIndex) {
+
+	public GameObject DisplayTile(int tileIndex) {
 		//check if tile exists
 
 		foreach (GameObject tileGameObject in GameObject.FindGameObjectsWithTag("Tile")) {
 			if (tileGameObject.GetComponent<TileInfo> ().TileID == tileIndex) {//tile is already displayed				
-				return;
+				return tileGameObject;
 			} 
 		}
 
@@ -205,6 +209,8 @@ public class MapGeneration : MonoBehaviour {
 		newTile.transform.Rotate (new Vector3 (90, 0, 0));
 
 		newTile.transform.position = new Vector3 (posx, 0, posz);
+
+		return newTile;
 	}
 
 	void generateMap() {

@@ -5,11 +5,13 @@ public class tribeSightRange : MonoBehaviour {
 
 	[HideInInspector] public GameObject GameControl;
 
-	public float sightRange =3f;
+	public int sightRange =3;
 
 	// Use this for initialization
 	void Start () {
 		GameControl = GameObject.FindGameObjectWithTag ("GameControl");
+
+		updateTilesInRange ();
 	}
 	
 	// Update is called once per frame
@@ -24,10 +26,23 @@ public class tribeSightRange : MonoBehaviour {
 		}
 	}
 
-	int[] getTilesIndexesinRange() {
-		GameObject currentTile = gameObject.GetComponent<TribeMovement> ().currentTile;
+	ArrayList getTilesIndexesinRange() {
+		
+		int currentTileIndex = gameObject.GetComponent<TribeMovement> ().currentTileID;
 
-		//int[] inRangeTiles = {currentTile.GetComponent<TileInfo>().TileID };
-		return null;
+		//int[] inRangeTiles = {currentTileIndex};
+
+		ArrayList inRangeTileList = new ArrayList ();
+
+		inRangeTileList.Add (currentTileIndex);
+
+
+		for (int i = currentTileIndex - sightRange; i <= currentTileIndex + sightRange; i++) {
+			if (i > 0) {
+				inRangeTileList.Add (i);
+			}
+		}
+
+		return inRangeTileList;
 	}
 }
