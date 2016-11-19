@@ -33,6 +33,9 @@ namespace HutongGames.PlayMaker.Actions
         [Tooltip("Repeat every frame.")]
         public bool everyFrame;
 
+        [Tooltip("Use the old manual editor UI.")]
+        public bool manualUI;
+
         private FsmObject cachedBehaviour;
         private FsmString cachedMethodName;
         private Type cachedType;

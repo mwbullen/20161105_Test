@@ -216,9 +216,10 @@ namespace HutongGames.PlayMakerEditor
             if (component == "collider") return FixFsmProperty(gameObject, fsmProperty, typeof(Collider));
             if (component == "collider2D") return FixFsmProperty(gameObject, fsmProperty, typeof(Collider2D));
             if (component == "hingeJoint") return FixFsmProperty(gameObject, fsmProperty, typeof(HingeJoint));
-            if (component == "particleEmitter") return FixFsmProperty(gameObject, fsmProperty, typeof(ParticleEmitter));
             if (component == "particleSystem") return FixFsmProperty(gameObject, fsmProperty, typeof(ParticleSystem));
-
+#if !UNITY_5_4_OR_NEWER
+            if (component == "particleEmitter") return FixFsmProperty(gameObject, fsmProperty, typeof(ParticleEmitter));
+#endif
             return false;
         }
 

@@ -19,11 +19,12 @@ namespace HutongGames.PlayMakerEditor
             AddScriptingDefineSymbolToAllTargets("PLAYMAKER");
 
             AddScriptingDefineSymbolToAllTargets("PLAYMAKER_1_8");
-            AddScriptingDefineSymbolToAllTargets("PLAYMAKER_1_8_2");
+            AddScriptingDefineSymbolToAllTargets("PLAYMAKER_1_8_3");
             AddScriptingDefineSymbolToAllTargets("PLAYMAKER_1_8_OR_NEWER");
             
             RemoveScriptingDefineSymbolFromAllTargets("PLAYMAKER_1_8_0");
             RemoveScriptingDefineSymbolFromAllTargets("PLAYMAKER_1_8_1");
+            RemoveScriptingDefineSymbolFromAllTargets("PLAYMAKER_1_8_2");
         }
 
         public static void AddScriptingDefineSymbolToAllTargets(string defineSymbol)

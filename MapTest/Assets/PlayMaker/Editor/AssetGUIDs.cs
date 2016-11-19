@@ -21,6 +21,8 @@ namespace HutongGames.PlayMakerEditor
         public static string PlayMakerUnitypackage180 = "f982487afa4f0444ea11e90a9d05b94e";
         public static string PlayMakerUnitypackage181 = "0921e97db908b2f4e8e407e68a2ed27c";
         public static string PlayMakerUnitypackage182 = "cd593cc3ded027746bf4658e85cb9fb9";
+        public static string PlayMakerUnitypackage183 = "21698fae67461744189ec5c7a8eb143b";
+
 
         public static string GetFullAssetPath(string assetGUID)
         {

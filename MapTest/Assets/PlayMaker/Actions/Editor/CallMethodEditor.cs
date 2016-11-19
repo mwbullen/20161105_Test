@@ -73,7 +73,7 @@ namespace HutongGames.PlayMakerEditor
 
                 if (callMethod.behaviour != null)
                 {
-                    cachedType = callMethod.behaviour.Value != null ? callMethod.behaviour.Value.GetType() : null;
+                    cachedType = callMethod.behaviour.ObjectType;
                     cachedTypeName = cachedType != null ? cachedType.FullName : "";
                     //Debug.Log(cachedTypeName);
                 }
@@ -84,23 +84,58 @@ namespace HutongGames.PlayMakerEditor
             }
         }
 
+        private void CheckCache()
+        {
+            if (callMethod.behaviour != null)
+            {
+                if (cachedType != callMethod.behaviour.ObjectType)
+                {
+                    ClearCache();
+                    UpdateCache();
+                    return;
+                }
+                
+                // NOTE: Temp fix. Permanent fix in VariableEditor.cs in 1.8.3
+                if (callMethod.behaviour.Value != null && callMethod.behaviour.Value.GetType() != callMethod.behaviour.ObjectType)
+                {
+                    callMethod.behaviour.ObjectType = callMethod.behaviour.Value.GetType();
+                    ClearCache();
+                    UpdateCache();
+                }
+
+                // NOTE: Temp fix. Permanent fix in VariableEditor.cs in 1.8.3
+                if ((!callMethod.behaviour.UseVariable && callMethod.behaviour.Value == null) || 
+                    callMethod.behaviour.IsNone)
+                {
+                    if (callMethod.behaviour.ObjectType != typeof (MonoBehaviour))
+                    {
+                        callMethod.behaviour.ObjectType = typeof (MonoBehaviour);
+                        callMethod.methodName = "";
+                        ClearCache();
+                        UpdateCache();
+                    }
+                }
+
+                /*
+                // User Reset the action
+                if (!callMethod.behaviour.UseVariable && callMethod.behaviour.Value == null && !string.IsNullOrEmpty(cachedTypeName))
+                {
+                    ClearCache();
+                }*/
+            }            
+        }
+
         public override bool OnGUI()
         {
-            /* Use old GUI
-            disable = EditorGUILayout.ToggleLeft("Disable", disable);
-            if (disable)
+            if (callMethod.manualUI)
             {
                 return DrawDefaultInspector();
-            }*/
+            }
 
             EditField("behaviour");
             FsmEditorGUILayout.ReadonlyTextField(cachedTypeName);
 
-            // User Reset the action
-            if (callMethod.behaviour.Value == null && !string.IsNullOrEmpty(cachedTypeName))
-            {
-                ClearCache();
-            }
+            CheckCache();
 
             EditorGUILayout.BeginHorizontal();
             FsmEditorGUILayout.PrefixLabel("Method");
@@ -108,10 +143,7 @@ namespace HutongGames.PlayMakerEditor
             var methodName = callMethod.methodName != null ? callMethod.methodName.Value : "";
             if (GUI.Button(buttonRect, methodName, EditorStyles.popup))
             {
-                if (callMethod.behaviour.Value != null)
-                {
-                    TypeHelpers.GenerateMethodMenu(cachedType, SelectMethod).DropDown(buttonRect);
-                }            
+                TypeHelpers.GenerateMethodMenu(cachedType, SelectMethod).DropDown(buttonRect);
             }
             EditorGUILayout.EndHorizontal();
 
@@ -146,6 +178,10 @@ namespace HutongGames.PlayMakerEditor
 
             EditField("everyFrame");
 
+            FsmEditorGUILayout.LightDivider();
+
+            EditField("manualUI");
+
             if (GUI.changed)
             {
                 UpdateCache();
@@ -163,6 +199,7 @@ namespace HutongGames.PlayMakerEditor
 
         private void ClearCache()
         {
+            //Debug.Log("ClearCache");
             cachedMethod = null;
             cachedMethodSignature = null;
             cachedParameters = null;

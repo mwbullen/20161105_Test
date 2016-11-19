@@ -64,10 +64,12 @@ namespace HutongGames.PlayMaker.Actions
 
 		void DoQuatLookRotation()
 		{
-			if (upVector.IsNone)
+			if (!upVector.IsNone)
 			{
 				result.Value = Quaternion.LookRotation(direction.Value,upVector.Value);
-			}else{
+			}
+            else
+            {
 				result.Value = Quaternion.LookRotation(direction.Value);
 			}
 		}
