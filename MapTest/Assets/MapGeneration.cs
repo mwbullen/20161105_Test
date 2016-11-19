@@ -186,7 +186,7 @@ public class MapGeneration : MonoBehaviour {
 
 		GameObject tilePrefab = null;
 
-		Debug.Log (tileIndex);
+		//Debug.Log (tileIndex);
 		//read string and assign prefab
 		if (tileChar == '_') {
 			tilePrefab = openTilePrefab;

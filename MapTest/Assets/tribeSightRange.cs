@@ -29,6 +29,8 @@ public class tribeSightRange : MonoBehaviour {
 	ArrayList getTilesIndexesinRange() {
 		
 		int currentTileIndex = gameObject.GetComponent<TribeMovement> ().currentTileID;
+		int rowSize = GameControl.GetComponent<MapGeneration>().rowSize;
+
 
 		//int[] inRangeTiles = {currentTileIndex};
 
@@ -36,13 +38,50 @@ public class tribeSightRange : MonoBehaviour {
 
 		inRangeTileList.Add (currentTileIndex);
 
-
+		//get tiles in same row to display
 		for (int i = currentTileIndex - sightRange; i <= currentTileIndex + sightRange; i++) {
 			if (i > 0) {
 				inRangeTileList.Add (i);
 			}
 		}
 
+		//int halfSightRange = Mathf.CeilToInt (sightRange / 2);
+
+		//get verticals to display
+		for (int i = 0; i <= sightRange; i++) {
+			int rowAboveVert = currentTileIndex + (rowSize * i);
+			inRangeTileList.Add (rowAboveVert);
+
+			int rowBelowVert = (currentTileIndex - (rowSize *i));
+			inRangeTileList.Add (rowBelowVert);
+
+			for (int subI = 0; subI <= sightRange - i; subI++) {
+				inRangeTileList.Add (rowAboveVert + subI);
+				inRangeTileList.Add (rowAboveVert - subI);
+			
+				inRangeTileList.Add (rowBelowVert + subI);
+				inRangeTileList.Add (rowBelowVert - subI);
+			}
+
+		}
+
+
+		/*
+		//get rows above and below
+		inRangeTileList.Add (currentTileIndex + rowSize);
+		inRangeTileList.Add (currentTileIndex + rowSize + halfSightRange );
+		inRangeTileList.Add (currentTileIndex + rowSize - halfSightRange );
+
+		inRangeTileList.Add (currentTileIndex - rowSize);
+		inRangeTileList.Add (currentTileIndex - rowSize + halfSightRange );
+		inRangeTileList.Add (currentTileIndex - rowSize - halfSightRange );
+		*/
+
 		return inRangeTileList;
+	}
+
+	int getTileIndexDistance(int indexA, int indexB) {
+
+		return 0;
 	}
 }
