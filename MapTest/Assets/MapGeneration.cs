@@ -33,12 +33,19 @@ public class MapGeneration : MonoBehaviour {
 	void Start () {
 		//UnityEngine.Debug.Log("test");
 
+		mapParentObject = GameObject.Instantiate (mapParentPrefab);
+
+
 		mapString = PlayerPrefs.GetString ("MapDefinitionStr");
 
 		if (mapString == null) {
 			createMapString ();
 		}
 
+		/*for (int i = 1; i < 500; i++) {
+			DisplayTile (i);
+		}
+		*/
 		//generateMap ();
 	}
 	
@@ -160,6 +167,46 @@ public class MapGeneration : MonoBehaviour {
 		}
 	}
 
+	public void DisplayTile(int tileIndex) {
+		//check if tile exists
+
+		foreach (GameObject tileGameObject in GameObject.FindGameObjectsWithTag("Tile")) {
+			if (tileGameObject.GetComponent<TileInfo> ().TileID == tileIndex) {//tile is already displayed				
+				return;
+			} 
+		}
+
+		//if tile does not exist, display
+
+		char tileChar = getTileStringatPosition (tileIndex);
+
+		GameObject tilePrefab = null;
+
+		Debug.Log (tileIndex);
+		//read string and assign prefab
+		if (tileChar == '_') {
+			tilePrefab = openTilePrefab;
+		} else if (tileChar == 'w') {
+			tilePrefab = waterTilePrefab;
+		} else if (tileChar == 'T') {
+			tilePrefab = treeTilePrefab;
+		} else if (tileChar == 'm') {
+			tilePrefab = mountainTilePrefab;
+		}
+
+		float posx =  tileIndex % rowSize;
+		float posz = Mathf.Round (tileIndex /rowSize);
+
+		//need to calculate coordinates
+		GameObject newTile = GameObject.Instantiate (tilePrefab);
+		newTile.GetComponent<TileInfo> ().TileID = tileIndex;
+
+		newTile.transform.parent = mapParentObject.transform;
+		newTile.transform.Rotate (new Vector3 (90, 0, 0));
+
+		newTile.transform.position = new Vector3 (posx, 0, posz);
+	}
+
 	void generateMap() {
 		if (mapParentObject != null) {
 			GameObject.Destroy (mapParentObject);
@@ -171,7 +218,13 @@ public class MapGeneration : MonoBehaviour {
 		float posx = 0;
 		float posz = 0;
 
-		foreach (char c in mapString) {
+		char[] mapStringChars = mapString.ToCharArray ();
+
+		//foreach (char c in mapString) {
+
+		for (int charIndex = 0; charIndex <= mapStringChars.Length; charIndex++) {
+			char c = mapStringChars [charIndex];
+
 			GameObject tilePrefab = null;
 
 			//read string and assign prefab
@@ -193,6 +246,8 @@ public class MapGeneration : MonoBehaviour {
 
 			if (tilePrefab != null) {
 				GameObject newTile = GameObject.Instantiate (tilePrefab);
+				newTile.GetComponent<TileInfo> ().TileID = charIndex;
+
 				newTile.transform.parent = mapParentObject.transform;
 				newTile.transform.Rotate (new Vector3 (90, 0, 0));
 				newTile.transform.position = new Vector3 (posx, 0, posz);

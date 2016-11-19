@@ -4,11 +4,11 @@ using HutongGames.PlayMaker;
 
 public class TribeMovement : MonoBehaviour {
 
-	public GameObject currentTile;
+	[HideInInspector] public GameObject currentTile;
 
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
 	
 	// Update is called once per frame
@@ -22,5 +22,7 @@ public class TribeMovement : MonoBehaviour {
 		movementFsm.SendEvent ("Move to Tile");
 
 		currentTile = targetTile;
+
+		gameObject.SendMessage ("updateTilesInRange");
 	}
 }
