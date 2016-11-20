@@ -256,19 +256,19 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
-          value: 2
+          value: 0
         - useVariable: 0
           name: 
           tooltip: 
           showInInspector: 0
           networkSync: 0
           value: 0
-        - useVariable: 1
+        - useVariable: 0
           name: 
           tooltip: 
           showInInspector: 0
           networkSync: 0
-          value: 0
+          value: 2
         - useVariable: 1
           name: 
           tooltip: 
@@ -456,7 +456,7 @@ MonoBehaviour:
     handleAnimatorMove: 0
     handleAnimatorIK: 0
   fsmTemplate: {fileID: 0}
-  eventHandlerComponentsAdded: 0
+  eventHandlerComponentsAdded: 1
 --- !u!114 &114000011033034428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aef92f5e0fe38a4ba03d67b9ae6eeb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentTileID: 487
+  currentTileID: 275
 --- !u!114 &114000011530619300
 MonoBehaviour:
   m_ObjectHideFlags: 1

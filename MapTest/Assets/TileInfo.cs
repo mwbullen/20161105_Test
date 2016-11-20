@@ -5,6 +5,8 @@ public class TileInfo : MonoBehaviour {
 
 	public int TileID;
 
+	public bool Walkable;
+
 	// Use this for initialization
 	void Start () {
 	

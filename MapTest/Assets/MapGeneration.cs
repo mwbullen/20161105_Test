@@ -59,7 +59,7 @@ public class MapGeneration : MonoBehaviour {
 
 	void refreshMap() {
 		createMapString ();
-		generateMap ();
+		//generateMap ();
 	}
 
 	char getRandomMapCharforPos(int i) {
@@ -183,6 +183,7 @@ public class MapGeneration : MonoBehaviour {
 		//if tile does not exist, display
 
 		char tileChar = getTileStringatPosition (tileIndex);
+
 
 		GameObject tilePrefab = null;
 
