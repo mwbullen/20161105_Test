@@ -5,7 +5,7 @@ public class KeyInput : MonoBehaviour {
 
 	GameObject tribe;
 
-	float keyPressInterval = 1f;
+	float keyPressInterval = .75f;
 	float timeSinceKeyPress = 0f;
 
 	// Use this for initialization
