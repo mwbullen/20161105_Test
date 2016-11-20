@@ -792,7 +792,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
+  m_BackGroundColor: {r: 0.000108131695, g: 0, b: 0, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1137,6 +1137,7 @@ GameObject:
   - 114: {fileID: 1692179636}
   - 114: {fileID: 1692179637}
   - 114: {fileID: 1692179638}
+  - 114: {fileID: 1692179639}
   m_Layer: 0
   m_Name: GameControl
   m_TagString: GameControl
@@ -1219,6 +1220,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tribePrefab: {fileID: 1000011425677756, guid: b045762c7537f9e4e8a940be17f40c14,
     type: 2}
+--- !u!114 &1692179639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1692179633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795b743834d9340a1bc159006f518cfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1768612919
 GameObject:
   m_ObjectHideFlags: 0
