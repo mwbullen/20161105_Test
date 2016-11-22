@@ -23,4 +23,19 @@ public class GameInit : MonoBehaviour {
 
 		gameObject.GetComponent<mouseInput>().Tribe  = newTribe;
 	}
+
+	public GameObject getRandomOpenTile() {
+		MapGeneration mapGen = gameObject.GetComponent<MapGeneration> ();
+
+		GameObject targetTile = null;
+
+		char[] mapChars = mapGen.mapString.ToCharArray ();
+
+		while (targetTile == null) {
+			int randomTileID = Random.Range (1, mapChars.Length);
+
+			//get random tile char
+			//if _, then set as Tribe start tileIndex
+		}
+	}
 }
