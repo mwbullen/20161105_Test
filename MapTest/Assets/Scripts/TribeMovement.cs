@@ -44,7 +44,9 @@ public class TribeMovement : MonoBehaviour {
 			currentTileID = targetTile.GetComponent<TileInfo> ().TileID;
 
 			gameObject.SendMessage ("updateTilesInRange");
-		}
+
+			gameControl.GetComponent<SaveLoad> ().Save ();
+			}
 		}
 
 	// Directional movement

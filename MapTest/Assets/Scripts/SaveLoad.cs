@@ -8,7 +8,8 @@ public class SaveLoad : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		Tribe = GameObject.FindGameObjectWithTag ("Tribe");
+
 	}
 	
 	// Update is called once per frame
@@ -17,17 +18,14 @@ public class SaveLoad : MonoBehaviour {
 	}
 
 	public void Save() {
-		Tribe = GameObject.FindGameObjectWithTag ("Tribe");
+		BinaryFormatter bf = new BinaryFormatter ();
 
 		Debug.Log (Application.persistentDataPath);
-		BinaryFormatter bf = new BinaryFormatter ();
 		FileStream fs = File.Create (Application.persistentDataPath + "/" + "savegame.tst");
 
-		foreach (GameObject g in  GameObject.FindGameObjectsWithTag("Character")) {			
-			bf.Serialize(fs,  null);
-		}
-
-
+		bf.Serialize(fs,Tribe.GetComponent<TribeStatus>().tribeInfo);
+			
+		fs.Flush ();
 		fs.Close ();
 
 	}
