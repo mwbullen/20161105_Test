@@ -9,6 +9,10 @@ public class Tribesman
 	public float FoodperDay;
 	public float Health;
 
+	public enum GenderType {Male, Female};
+
+	public GenderType Gender;
+
 	public Tribesman ()
 	{
 		Name = generateRandomName();
@@ -17,6 +21,14 @@ public class Tribesman
 		Health = 100f;
 
 		Age = UnityEngine.Random.Range (10, 50);
+
+		int genderRoll = UnityEngine.Random.Range (1, 3);
+
+		if (genderRoll == 1) {
+			Gender = GenderType.Male;
+		} else {
+			Gender = GenderType.Female;
+		}
 
 	}
 
@@ -44,6 +56,10 @@ public class Tribesman
 			} else {
 				resultName += consonants [UnityEngine.Random.Range (0, consonants.Length)];
 				nextLetterisVowel = true;
+			}
+
+			if (i == 0) {
+				resultName = resultName.ToUpper ();
 			}
 		}
 
