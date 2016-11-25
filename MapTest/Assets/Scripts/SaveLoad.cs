@@ -9,7 +9,6 @@ public class SaveLoad : MonoBehaviour {
 	string SaveTribeInfoFileName = "tribeSave.gam";
 	// Use this for initialization
 	void Start () {
-		Tribe = GameObject.FindGameObjectWithTag ("Tribe");
 
 	}
 	
@@ -19,6 +18,8 @@ public class SaveLoad : MonoBehaviour {
 	}
 
 	public void Save() {
+		Tribe = GameObject.FindGameObjectWithTag ("Tribe");
+
 		BinaryFormatter bf = new BinaryFormatter ();
 
 		Debug.Log (Application.persistentDataPath);

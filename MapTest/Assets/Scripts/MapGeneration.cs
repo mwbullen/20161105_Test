@@ -31,8 +31,15 @@ public class MapGeneration : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//UnityEngine.Debug.Log("test");
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	
+	}
 
+	public void LoadSavedMap() {
 		mapParentObject = GameObject.Instantiate (mapParentPrefab);
 
 
@@ -42,19 +49,6 @@ public class MapGeneration : MonoBehaviour {
 			createMapString ();
 		}
 
-
-		gameObject.GetComponent<GameInit> ().CreateTribe ();
-
-		/*for (int i = 1; i < 500; i++) {
-			DisplayTile (i);
-		}
-		*/
-		//generateMap ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 
 	void refreshMap() {

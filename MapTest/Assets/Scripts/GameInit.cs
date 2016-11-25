@@ -7,7 +7,10 @@ public class GameInit : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		gameObject.GetComponent<MapGeneration> ().LoadSavedMap();
+
+		gameObject.GetComponent<GameInit> ().CreateTribe ();
+
 	}
 	
 	// Update is called once per frame
