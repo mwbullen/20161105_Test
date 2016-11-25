@@ -36,7 +36,7 @@ public class SaveLoad : MonoBehaviour {
 		if (File.Exists (Application.persistentDataPath + "/" + SaveTribeInfoFileName)) {
 			BinaryFormatter bf = new BinaryFormatter ();
 
-			FileStream fs = File.Create (Application.persistentDataPath + "/" + SaveTribeInfoFileName);
+			FileStream fs = File.Open (Application.persistentDataPath + "/" + SaveTribeInfoFileName, FileMode.Open);
 
 			TribeInfo savedTribeInfo = (TribeInfo) bf.Deserialize (fs);
 
