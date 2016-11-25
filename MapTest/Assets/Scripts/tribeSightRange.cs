@@ -11,7 +11,6 @@ public class tribeSightRange : MonoBehaviour {
 	void Start () {
 		GameControl = GameObject.FindGameObjectWithTag ("GameControl");
 
-		updateTilesInRange ();
 	}
 	
 	// Update is called once per frame
@@ -19,7 +18,7 @@ public class tribeSightRange : MonoBehaviour {
 	
 	}
 
-	void updateTilesInRange() {
+	public void updateTilesInRange() {
 
 		foreach (int tileIndex in getTilesIndexesinRange()) {
 			GameControl.SendMessage ("DisplayTile", tileIndex);

@@ -15,6 +15,10 @@ public class TribeStatus : MonoBehaviour {
 		if (tribeInfo == null) {
 			tribeInfo = new TribeInfo();
 		}
+
+		gameObject.GetComponent<TribeMovement> ().SpawnatLastTile ();
+		gameObject.GetComponent<tribeSightRange>().updateTilesInRange ();
+
 	}
 	
 	// Update is called once per frame

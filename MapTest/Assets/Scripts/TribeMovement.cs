@@ -16,7 +16,7 @@ public class TribeMovement : MonoBehaviour {
 
 		rowSize = gameControl.GetComponent<MapGeneration> ().rowSize;
 
-		SpawnatLastTile ();
+		//SpawnatLastTile ();
 	}
 
 	int currentTileID {
@@ -32,7 +32,7 @@ public class TribeMovement : MonoBehaviour {
 	}
 
 
-	void SpawnatLastTile() {
+	public void SpawnatLastTile() {
 		GameObject lastTile = gameControl.GetComponent<MapGeneration> ().DisplayTile (currentTileID);
 
 		gameObject.transform.position = lastTile.transform.position;
