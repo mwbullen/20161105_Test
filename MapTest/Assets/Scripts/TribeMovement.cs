@@ -4,8 +4,7 @@ using HutongGames.PlayMaker;
 
 public class TribeMovement : MonoBehaviour {
 
-	//[HideInInspector] public GameObject currentTile;
-	public int currentTileID = 125;
+	[HideInInspector] public GameObject currentTile;
 	[HideInInspector] public int rowSize;
 
 	GameObject gameControl;
@@ -18,6 +17,18 @@ public class TribeMovement : MonoBehaviour {
 		rowSize = gameControl.GetComponent<MapGeneration> ().rowSize;
 
 		SpawnatLastTile ();
+	}
+
+	int currentTileID {
+		get {
+			return gameObject.GetComponent<TribeStatus> ().tribeInfo.currentTileID;
+
+		}
+
+		set {
+			gameObject.GetComponent<TribeStatus> ().tribeInfo.currentTileID = value;
+
+		}
 	}
 
 

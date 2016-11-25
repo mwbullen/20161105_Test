@@ -40,6 +40,7 @@ public class SaveLoad : MonoBehaviour {
 
 			TribeInfo savedTribeInfo = (TribeInfo) bf.Deserialize (fs);
 
+			fs.Close ();
 			return savedTribeInfo;
 		}
 

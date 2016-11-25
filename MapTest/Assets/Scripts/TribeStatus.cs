@@ -1,13 +1,20 @@
-﻿using UnityEngine;
+﻿	using UnityEngine;
 using System.Collections;
 
 public class TribeStatus : MonoBehaviour {
 
-	public TribeInfo tribeInfo = new TribeInfo ();
+	public TribeInfo tribeInfo ;
+	public GameObject gameControl;
 
 	// Use this for initialization
 	void Start () {
-	
+		gameControl = GameObject.FindGameObjectWithTag ("GameControl");
+
+		tribeInfo = gameControl.GetComponent<SaveLoad> ().LoadSavedTribeInfo();
+
+		if (tribeInfo == null) {
+			tribeInfo = new TribeInfo();
+		}
 	}
 	
 	// Update is called once per frame

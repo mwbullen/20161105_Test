@@ -196,16 +196,19 @@ public class MapGeneration : MonoBehaviour {
 		float posx =  tileIndex % rowSize;
 		float posz = Mathf.Round (tileIndex /rowSize);
 
-		//need to calculate coordinates
-		GameObject newTile = GameObject.Instantiate (tilePrefab);
-		newTile.GetComponent<TileInfo> ().TileID = tileIndex;
+		if (tilePrefab != null) {
+			//need to calculate coordinates
+			GameObject newTile = GameObject.Instantiate (tilePrefab);
+			newTile.GetComponent<TileInfo> ().TileID = tileIndex;
 
-		newTile.transform.parent = mapParentObject.transform;
-		newTile.transform.Rotate (new Vector3 (90, 0, 0));
+			newTile.transform.parent = mapParentObject.transform;
+			newTile.transform.Rotate (new Vector3 (90, 0, 0));
 
-		newTile.transform.position = new Vector3 (posx, 0, posz);
+			newTile.transform.position = new Vector3 (posx, 0, posz);
 
-		return newTile;
+			return newTile;
+		}
+		return null;
 	}
 
 	void generateMap() {

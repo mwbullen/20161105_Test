@@ -28,7 +28,7 @@ public class tribeSightRange : MonoBehaviour {
 
 	ArrayList getTilesIndexesinRange() {
 		
-		int currentTileIndex = gameObject.GetComponent<TribeMovement> ().currentTileID;
+		int currentTileIndex = gameObject.GetComponent<TribeStatus> ().tribeInfo.currentTileID;
 		int rowSize = GameControl.GetComponent<MapGeneration>().rowSize;
 
 
