@@ -494,6 +494,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26e9d11f354c6405e9b5b6f7ed2b1dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tribeInfo:
+    dailyFoodNeed: 0
+    foodStorage: 0
+    TribeMembers:
+    - Name: 
+      Age: 0
+    - Name: 
+      Age: 0
 --- !u!136 &136000010019329874
 CapsuleCollider:
   m_ObjectHideFlags: 1
