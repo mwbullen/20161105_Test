@@ -7,6 +7,7 @@ public class SaveLoad : MonoBehaviour {
 	GameObject Tribe;
 
 	string SaveTribeInfoFileName = "tribeSave.gam";
+	string SaveMapInfoFileName= "mapSave.gam";
 	// Use this for initialization
 	void Start () {
 
@@ -42,6 +43,21 @@ public class SaveLoad : MonoBehaviour {
 
 			fs.Close ();
 			return savedTribeInfo;
+		}
+
+		return null;
+	}
+
+	public MapInfo LoatSavedMapInfo() {
+		if (File.Exists (Application.persistentDataPath + "/" + SaveMapInfoFileName)) {
+			BinaryFormatter bf = new BinaryFormatter ();
+
+			FileStream fs = File.Open (Application.persistentDataPath + "/" + SaveMapInfoFileName, FileMode.Open);
+
+			MapInfo savedMapInfo = (MapInfo) bf.Deserialize (fs);
+
+			fs.Close ();
+			return savedMapInfo;
 		}
 
 		return null;

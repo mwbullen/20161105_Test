@@ -42,7 +42,6 @@ public class MapGeneration : MonoBehaviour {
 	public void LoadSavedMap() {
 		mapParentObject = GameObject.Instantiate (mapParentPrefab);
 
-
 		mapString = PlayerPrefs.GetString ("MapDefinitionStr");
 
 		if (mapString == null) {
@@ -126,27 +125,6 @@ public class MapGeneration : MonoBehaviour {
 		mapString = "";
 
 		for (int i = 0; i < ((rowSize * numberRows)-1); i ++) {
-			/*char c = '_';
-
-			//check for water
-			float tileCheckF = Random.Range (0f, 1f);
-
-			float tmpWaterChance = waterChance;
-
-			//check for adjacent tiles
-
-			if (getTileStringatPosition (i - 1) == 'w') {
-				tmpWaterChance = tmpWaterChance +waterAdjacentBonus;
-			}
-
-			if (getTileStringatPosition (i - rowSize) == 'w') {
-				tmpWaterChance = tmpWaterChance  +waterAdjacentBonus;
-			}
-
-			if (tileCheckF < tmpWaterChance) {
-				c = 'w';
-			} 
-			*/
 
 			char c = getRandomMapCharforPos (i);
 			mapString = mapString + c;
