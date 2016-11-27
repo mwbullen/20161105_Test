@@ -33,7 +33,7 @@ public class TribeMovement : MonoBehaviour {
 
 
 	public void SpawnatLastTile() {
-		GameObject lastTile = gameControl.GetComponent<MapGeneration> ().DisplayTile (currentTileID);
+		GameObject lastTile = gameControl.GetComponent<MapStatus> ().DisplayTile (currentTileID);
 
 		gameObject.transform.position = lastTile.transform.position;
 
@@ -65,28 +65,28 @@ public class TribeMovement : MonoBehaviour {
 	public void MoveUp() {
 		int targetTileID = currentTileID + rowSize;
 
-		MovetoTile (gameControl.GetComponent<MapGeneration> ().DisplayTile (targetTileID));
+		MovetoTile (gameControl.GetComponent<MapStatus> ().DisplayTile (targetTileID));
 
 	}
 
 	public void MoveDown() {
 		int targetTileID = currentTileID - rowSize;
 
-		MovetoTile (gameControl.GetComponent<MapGeneration> ().DisplayTile (targetTileID));
+		MovetoTile (gameControl.GetComponent<MapStatus> ().DisplayTile (targetTileID));
 
 	}
 
 	public void MoveLeft() {
 		int targetTileID = currentTileID -1;
 
-		MovetoTile (gameControl.GetComponent<MapGeneration> ().DisplayTile (targetTileID));
+		MovetoTile (gameControl.GetComponent<MapStatus> ().DisplayTile (targetTileID));
 
 	}
 
 	public void MoveRight() {
 		int targetTileID = currentTileID + 1;
 
-		MovetoTile (gameControl.GetComponent<MapGeneration> ().DisplayTile (targetTileID));
+		MovetoTile (gameControl.GetComponent<MapStatus> ().DisplayTile (targetTileID));
 
 	}
 }

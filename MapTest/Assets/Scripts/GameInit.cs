@@ -7,7 +7,9 @@ public class GameInit : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		gameObject.GetComponent<MapGeneration> ().LoadSavedMap();
+		//gameObject.GetComponent<MapGeneration> ().LoadSavedMap();
+
+		gameObject.GetComponent<MapStatus> ().LoadorCreateMap ();
 
 		gameObject.GetComponent<GameInit> ().CreateTribe ();
 

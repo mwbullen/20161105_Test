@@ -23,7 +23,7 @@ public class SaveLoad : MonoBehaviour {
 
 		BinaryFormatter bf = new BinaryFormatter ();
 
-		Debug.Log (Application.persistentDataPath);
+		//Debug.Log (Application.persistentDataPath);
 		FileStream fs = File.Create (Application.persistentDataPath + "/" + SaveTribeInfoFileName);
 
 		bf.Serialize(fs,Tribe.GetComponent<TribeStatus>().tribeInfo);
@@ -48,7 +48,20 @@ public class SaveLoad : MonoBehaviour {
 		return null;
 	}
 
-	public MapInfo LoatSavedMapInfo() {
+	public void SaveMapInfo() {
+		BinaryFormatter bf = new BinaryFormatter ();
+
+		FileStream fs = File.Create (Application.persistentDataPath + "/" + SaveMapInfoFileName);
+
+		bf.Serialize (fs,gameObject.GetComponent<MapStatus> ().mapInfo);
+
+		fs.Flush();
+		fs.Close();
+	}
+
+
+
+	public MapInfo LoadSavedMapInfo() {
 		if (File.Exists (Application.persistentDataPath + "/" + SaveMapInfoFileName)) {
 			BinaryFormatter bf = new BinaryFormatter ();
 

@@ -17,15 +17,8 @@ public class MapGeneration : MonoBehaviour {
 
 	public int openChanceBase = 50;
 
-	public string mapString;
-	public GameObject mapParentPrefab;
+	string mapString;
 
-	GameObject mapParentObject;
-
-	public GameObject openTilePrefab;
-	public GameObject waterTilePrefab;
-	public GameObject mountainTilePrefab;
-	public GameObject treeTilePrefab;
 
 	//public ArrayList mapDefinition = new ArrayList();
 
@@ -39,20 +32,13 @@ public class MapGeneration : MonoBehaviour {
 	
 	}
 
-	public void LoadSavedMap() {
-		mapParentObject = GameObject.Instantiate (mapParentPrefab);
-
-		mapString = PlayerPrefs.GetString ("MapDefinitionStr");
-
-		if (mapString == null) {
-			createMapString ();
+	char getTileStringatPosition(int position) {
+		if (position > 0) {
+			//return mapDefinition [position].ToString();
+			return mapString[position];
+		} else {
+			return ' ';
 		}
-
-	}
-
-	void refreshMap() {
-		createMapString ();
-		//generateMap ();
 	}
 
 	char getRandomMapCharforPos(int i) {
@@ -120,8 +106,7 @@ public class MapGeneration : MonoBehaviour {
 
 	}
 
-	void createMapString() {
-		//mapDefinition.Clear ();
+	public string createNewMapString() {
 		mapString = "";
 
 		for (int i = 0; i < ((rowSize * numberRows)-1); i ++) {
@@ -129,115 +114,10 @@ public class MapGeneration : MonoBehaviour {
 			char c = getRandomMapCharforPos (i);
 			mapString = mapString + c;
 
-			PlayerPrefs.SetString ("MapDefinitionStr", mapString);
-		}
-	}
-
-	char getTileStringatPosition(int position) {
-		if (position > 0) {
-			//return mapDefinition [position].ToString();
-			return mapString[position];
-		} else {
-			return ' ';
-		}
-	}
-
-
-	public GameObject DisplayTile(int tileIndex) {
-		//check if tile exists
-
-		foreach (GameObject tileGameObject in GameObject.FindGameObjectsWithTag("Tile")) {
-			if (tileGameObject.GetComponent<TileInfo> ().TileID == tileIndex) {//tile is already displayed				
-				return tileGameObject;
-			} 
+			//PlayerPrefs.SetString ("MapDefinitionStr", mapString);
 		}
 
-		//if tile does not exist, display
-
-		char tileChar = getTileStringatPosition (tileIndex);
-
-
-		GameObject tilePrefab = null;
-
-		//Debug.Log (tileIndex);
-		//read string and assign prefab
-		if (tileChar == '_') {
-			tilePrefab = openTilePrefab;
-		} else if (tileChar == 'w') {
-			tilePrefab = waterTilePrefab;
-		} else if (tileChar == 'T') {
-			tilePrefab = treeTilePrefab;
-		} else if (tileChar == 'm') {
-			tilePrefab = mountainTilePrefab;
-		}
-
-		float posx =  tileIndex % rowSize;
-		float posz = Mathf.Round (tileIndex /rowSize);
-
-		if (tilePrefab != null) {
-			//need to calculate coordinates
-			GameObject newTile = GameObject.Instantiate (tilePrefab);
-			newTile.GetComponent<TileInfo> ().TileID = tileIndex;
-
-			newTile.transform.parent = mapParentObject.transform;
-			newTile.transform.Rotate (new Vector3 (90, 0, 0));
-
-			newTile.transform.position = new Vector3 (posx, 0, posz);
-
-			return newTile;
-		}
-		return null;
-	}
-
-	void generateMap() {
-		if (mapParentObject != null) {
-			GameObject.Destroy (mapParentObject);
-		}
-
-		mapParentObject = GameObject.Instantiate (mapParentPrefab);
-
-		float counter = 0;
-		float posx = 0;
-		float posz = 0;
-
-		char[] mapStringChars = mapString.ToCharArray ();
-
-		//foreach (char c in mapString) {
-
-		for (int charIndex = 0; charIndex <= mapStringChars.Length; charIndex++) {
-			char c = mapStringChars [charIndex];
-
-			GameObject tilePrefab = null;
-
-			//read string and assign prefab
-			if (c == '_') {
-				tilePrefab = openTilePrefab;
-			} else if (c == 'w') {
-				tilePrefab = waterTilePrefab;
-			} else if (c == 'T') {
-				tilePrefab = treeTilePrefab;
-			} else if (c == 'm') {
-				tilePrefab = mountainTilePrefab;
-			}
-
-			//wrap row if row limit reached
-			if (posx > rowSize) {
-				posx = 0;
-				posz += 1;
-			}
-
-			if (tilePrefab != null) {
-				GameObject newTile = GameObject.Instantiate (tilePrefab);
-				newTile.GetComponent<TileInfo> ().TileID = charIndex;
-
-				newTile.transform.parent = mapParentObject.transform;
-				newTile.transform.Rotate (new Vector3 (90, 0, 0));
-				newTile.transform.position = new Vector3 (posx, 0, posz);
-
-			}
-			posx += 1;
-			counter += 1;
-		}
+		return mapString;
 	}
 
 
