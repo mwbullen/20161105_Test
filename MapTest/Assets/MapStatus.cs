@@ -16,7 +16,8 @@ public class MapStatus : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		mapParentObject = GameObject.Instantiate (mapParentPrefab);
+
 	}
 
 	public void LoadorCreateMap() {
@@ -33,6 +34,7 @@ public class MapStatus : MonoBehaviour {
 
 				mapInfo = new MapInfo (newMapString, rowSize, numRows);
 
+			gameObject.GetComponent<SaveLoad> ().SaveMapInfo ();
 			}
 	}
 	

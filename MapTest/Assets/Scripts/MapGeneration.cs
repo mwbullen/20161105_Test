@@ -114,7 +114,6 @@ public class MapGeneration : MonoBehaviour {
 			char c = getRandomMapCharforPos (i);
 			mapString = mapString + c;
 
-			//PlayerPrefs.SetString ("MapDefinitionStr", mapString);
 		}
 
 		return mapString;
