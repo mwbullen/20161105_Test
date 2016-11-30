@@ -4,7 +4,7 @@ using System.Collections;
 public class TribeStatus : MonoBehaviour {
 
 	public TribeInfo tribeInfo ;
-	public GameObject gameControl;
+    GameObject gameControl;
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +20,8 @@ public class TribeStatus : MonoBehaviour {
 		gameObject.GetComponent<tribeSightRange>().updateTilesInRange ();
 
 	}
-	
+
+
 	// Update is called once per frame
 	void Update () {
 	

@@ -57,9 +57,16 @@ public class TribeMovement : MonoBehaviour {
 			gameObject.SendMessage ("updateTilesInRange");
 
 			gameControl.GetComponent<SaveLoad> ().Save ();
-			}
+			finishMove ();
+
 		}
 
+	}
+
+	void finishMove() {
+		gameObject.GetComponent<TribeStatus> ().tribeInfo.decrementFood ();
+
+	}
 	// Directional movement
 
 	public void MoveUp() {

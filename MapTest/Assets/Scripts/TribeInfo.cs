@@ -9,7 +9,7 @@ public class TribeInfo : System.Object
 	public int currentTileID = 125;
 
 	public float dailyFoodNeed;
-	public float foodStorage;
+	public float foodStorage =100;
 
 	public int defaultTribeSize = 3;
 
@@ -21,6 +21,7 @@ public class TribeInfo : System.Object
 		TribeMembers = createNewTribeMembers ();
 	}
 
+
 	List<Tribesman> createNewTribeMembers () {
 		List<Tribesman> resultList = new List<Tribesman> ();
 
@@ -29,6 +30,19 @@ public class TribeInfo : System.Object
 		}
 
 		return resultList;
+	}
+
+
+	public void decrementFood() {
+
+		dailyFoodNeed = 0;
+		foreach (Tribesman t in TribeMembers) {
+			dailyFoodNeed += t.FoodperDay;
+		}
+
+		dailyFoodNeed = dailyFoodNeed;
+
+		foodStorage -= dailyFoodNeed;
 	}
 
 

@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aef92f5e0fe38a4ba03d67b9ae6eeb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentTileID: 275
+  currentTile: {fileID: 0}
   rowSize: 0
 --- !u!114 &114000012167235570
 MonoBehaviour:
@@ -495,13 +495,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tribeInfo:
+    currentTileID: 125
     dailyFoodNeed: 0
-    foodStorage: 0
+    foodStorage: 100
+    defaultTribeSize: 3
     TribeMembers:
     - Name: 
       Age: 0
+      FoodperDay: 10
+      Health: 100
+      Gender: 1
     - Name: 
       Age: 0
+      FoodperDay: 10
+      Health: 100
+      Gender: 1
+  gameControl: {fileID: 0}
 --- !u!136 &136000010019329874
 CapsuleCollider:
   m_ObjectHideFlags: 1
