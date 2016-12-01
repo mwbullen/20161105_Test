@@ -500,6 +500,8 @@ MonoBehaviour:
     foodStorage: 100
     defaultTribeSize: 3
     TribeMembers: []
+  tribeMemberDetailUIPrefab: {fileID: 1000013756570340, guid: d36a50dfc15be184da8f7cf921c97683,
+    type: 2}
 --- !u!136 &136000010019329874
 CapsuleCollider:
   m_ObjectHideFlags: 1

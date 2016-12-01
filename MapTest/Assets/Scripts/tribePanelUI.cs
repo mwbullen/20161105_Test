@@ -23,6 +23,8 @@ public class tribePanelUI : MonoBehaviour {
 		foreach (Tribesman tm in tribe.GetComponent<TribeStatus>().tribeInfo.TribeMembers) {
 			GameObject newDetailPanel = GameObject.Instantiate (tribeMemberDetailPnlPrefab);
 
+			newDetailPanel.GetComponent<TribeDetailUI> ().tribeMember = tm;
+			newDetailPanel.GetComponent<TribeDetailUI> ().updateDisplay ();
 
 		}
 	}

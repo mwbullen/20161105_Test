@@ -6,6 +6,8 @@ public class TribeStatus : MonoBehaviour {
 	public TribeInfo tribeInfo ;
     GameObject gameControl;
 
+	public GameObject tribeMemberDetailUIPrefab;
+
 	// Use this for initialization
 	void Start () {
 		gameControl = GameObject.FindGameObjectWithTag ("GameControl");
@@ -19,8 +21,21 @@ public class TribeStatus : MonoBehaviour {
 		gameObject.GetComponent<TribeMovement> ().SpawnatLastTile ();
 		gameObject.GetComponent<tribeSightRange>().updateTilesInRange ();
 
+		createTribeMemberUI ();
 	}
 
+	void createTribeMemberUI() {
+		GameObject tribeUIPanel = GameObject.FindGameObjectWithTag ("TribeUIPanel");
+
+		foreach (Tribesman tm in tribeInfo.TribeMembers) {
+			GameObject newUIDetail = GameObject.Instantiate (tribeMemberDetailUIPrefab);
+			newUIDetail.GetComponent<TribeDetailUI> ().tribeMember = tm;
+			newUIDetail.transform.parent = tribeUIPanel.transform;
+
+			newUIDetail.GetComponent<TribeDetailUI> ().updateDisplay ();
+			//newUIDetail.
+		}
+	}
 
 	// Update is called once per frame
 	void Update () {
