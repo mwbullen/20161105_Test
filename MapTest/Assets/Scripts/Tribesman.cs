@@ -32,7 +32,6 @@ public class Tribesman
 
 	}
 
-
 	string generateRandomName() {
 		//consonant-vowel-consonant-vowel-consonant
 
@@ -64,6 +63,11 @@ public class Tribesman
 		}
 
 		return resultName;
+	}
+
+	public void decrementHealth(float decrementAmount) {
+		Health -= decrementAmount;
+
 	}
 }
 

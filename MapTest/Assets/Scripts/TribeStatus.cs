@@ -31,4 +31,49 @@ public class TribeStatus : MonoBehaviour {
 		//foodStorage =- dailyFoodNeed;
 
 	}
+
+	public void decrementFood() {
+
+		//update total daily food req
+		tribeInfo.dailyFoodNeed = 0;
+		foreach (Tribesman t in tribeInfo.TribeMembers) {
+			tribeInfo.dailyFoodNeed += t.FoodperDay;
+		}
+
+		float newfoodStorage = tribeInfo.foodStorage - tribeInfo.dailyFoodNeed;
+
+		//food shortage
+		if (newfoodStorage < 0) {
+			tribeInfo.foodStorage = 0;
+			distributeFoodShortfall (newfoodStorage);
+		}	
+
+	}
+
+	void distributeFoodShortfall(float shortFall) {
+		float foodShortfall = Mathf.Abs (shortFall);
+
+		float shortagePerPerson = Mathf.RoundToInt( foodShortfall / tribeInfo.TribeMembers.Count);
+
+		foreach (Tribesman tm in tribeInfo.TribeMembers) {
+			tm.decrementHealth (shortagePerPerson);
+		}
+
+		checkForDeadTribeMembers ();
+	}
+
+	void checkForDeadTribeMembers() {
+		ArrayList removeList = new ArrayList();
+
+		foreach (Tribesman tm in tribeInfo.TribeMembers) {
+			if (tm.Health < 0) {
+				removeList.Add(tm);
+			}
+		}
+
+		foreach (Tribesman tm in removeList) {
+			tribeInfo.TribeMembers.Remove(tm);
+		}
+	}
+
 }

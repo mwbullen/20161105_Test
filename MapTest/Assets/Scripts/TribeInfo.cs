@@ -33,17 +33,6 @@ public class TribeInfo : System.Object
 	}
 
 
-	public void decrementFood() {
-
-		dailyFoodNeed = 0;
-		foreach (Tribesman t in TribeMembers) {
-			dailyFoodNeed += t.FoodperDay;
-		}
-
-		dailyFoodNeed = dailyFoodNeed;
-
-		foodStorage -= dailyFoodNeed;
-	}
 
 
 }

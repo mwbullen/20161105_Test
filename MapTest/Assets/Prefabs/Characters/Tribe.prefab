@@ -499,18 +499,7 @@ MonoBehaviour:
     dailyFoodNeed: 0
     foodStorage: 100
     defaultTribeSize: 3
-    TribeMembers:
-    - Name: 
-      Age: 0
-      FoodperDay: 10
-      Health: 100
-      Gender: 1
-    - Name: 
-      Age: 0
-      FoodperDay: 10
-      Health: 100
-      Gender: 1
-  gameControl: {fileID: 0}
+    TribeMembers: []
 --- !u!136 &136000010019329874
 CapsuleCollider:
   m_ObjectHideFlags: 1
