@@ -9,12 +9,17 @@ public class GameInit : MonoBehaviour {
 	void Start () {
 		//gameObject.GetComponent<MapGeneration> ().LoadSavedMap();
 
+		startGame ();
+
+
+	}
+
+	void startGame() {
 		gameObject.GetComponent<MapStatus> ().LoadorCreateMap ();
 
 		gameObject.GetComponent<GameInit> ().CreateTribe ();
-
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 	
@@ -27,5 +32,14 @@ public class GameInit : MonoBehaviour {
 		Camera.main.SendMessage ("SetFollowTarget", newTribe);
 
 		gameObject.GetComponent<mouseInput>().Tribe  = newTribe;
+	}
+
+	public void NewGame() {
+		//delete save files
+		gameObject.GetComponent<SaveLoad>().deleteSaveGame();
+
+		//reload Scene;
+
+		UnityEngine.SceneManagement.SceneManager.LoadScene (0);
 	}
 }

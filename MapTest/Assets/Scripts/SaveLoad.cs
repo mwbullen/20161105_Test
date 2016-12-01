@@ -75,4 +75,12 @@ public class SaveLoad : MonoBehaviour {
 
 		return null;
 	}
+
+	public void deleteSaveGame() {
+		string mapSaveLocation = Application.persistentDataPath + "/" + SaveMapInfoFileName;
+		string tribeSaveLocation = Application.persistentDataPath + "/" + SaveTribeInfoFileName;
+
+		File.Delete (mapSaveLocation);
+		File.Delete (tribeSaveLocation);
+	}
 }
