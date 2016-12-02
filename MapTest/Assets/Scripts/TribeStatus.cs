@@ -37,6 +37,13 @@ public class TribeStatus : MonoBehaviour {
 		}
 	}
 
+	public void updateTribeDetailDisplay() {
+		GameObject tribeUIPanel = GameObject.FindGameObjectWithTag ("TribeUIPanel");
+
+		tribeUIPanel.BroadcastMessage ("updateDisplay");
+	}
+
+
 	// Update is called once per frame
 	void Update () {
 	

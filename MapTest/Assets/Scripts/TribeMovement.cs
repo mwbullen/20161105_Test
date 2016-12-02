@@ -65,6 +65,7 @@ public class TribeMovement : MonoBehaviour {
 
 	void finishMove() {
 		gameObject.GetComponent<TribeStatus> ().decrementFood();
+		gameObject.GetComponent<TribeStatus> ().updateTribeDetailDisplay ();
 
 		gameControl.GetComponent<SaveLoad> ().Save ();
 	}
