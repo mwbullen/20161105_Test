@@ -19,7 +19,10 @@ public class TribeStatus : MonoBehaviour {
 		}
 
 		gameObject.GetComponent<TribeMovement> ().SpawnatLastTile ();
-		gameObject.GetComponent<tribeSightRange>().updateTilesInRange ();
+
+		GameObject currentTile = gameControl.GetComponent<MapStatus> ().DisplayTile (tribeInfo.currentTileID);
+
+		gameObject.GetComponent<tribeSightRange> ().updateTilesInRange (currentTile.GetComponent<TileInfo> ().visibilityModifier);
 
 		createTribeMemberUI ();
 	}

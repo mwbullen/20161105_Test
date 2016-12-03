@@ -116,3 +116,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TileID: 0
   Walkable: 1
+  foodChance: 0
+  visibilityModifier: 1

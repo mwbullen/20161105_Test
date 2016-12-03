@@ -206,4 +206,4 @@ MonoBehaviour:
   TileID: 1
   Walkable: 1
   foodChance: 20
-  hasFood: 0
+  visibilityModifier: 1

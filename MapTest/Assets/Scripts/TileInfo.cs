@@ -11,6 +11,7 @@ public class TileInfo : MonoBehaviour {
 	//public bool hasFood = false;
 	bool hasFoodBool;
 
+	public float visibilityModifier = 1f;
 	GameObject foodObject;
 
 	public bool hasFood{

@@ -5,7 +5,7 @@ public class tribeSightRange : MonoBehaviour {
 
 	[HideInInspector] public GameObject GameControl;
 
-	public int sightRange =3;
+	public int baseSightRange =3;
 
 	// Use this for initialization
 	void Start () {
@@ -18,14 +18,14 @@ public class tribeSightRange : MonoBehaviour {
 	
 	}
 
-	public void updateTilesInRange() {
-
-		foreach (int tileIndex in getTilesIndexesinRange()) {
+	public void updateTilesInRange(float visibilityModifer) {
+		
+		foreach (int tileIndex in getTilesIndexesinRange(visibilityModifer)) {
 			GameControl.SendMessage ("DisplayTile", tileIndex);
 		}
 	}
 
-	ArrayList getTilesIndexesinRange() {
+	ArrayList getTilesIndexesinRange(float visibilityModifier) {
 		
 		int currentTileIndex = gameObject.GetComponent<TribeStatus> ().tribeInfo.currentTileID;
 		int rowSize = GameControl.GetComponent<MapGeneration>().rowSize;
@@ -36,6 +36,8 @@ public class tribeSightRange : MonoBehaviour {
 		ArrayList inRangeTileList = new ArrayList ();
 
 		inRangeTileList.Add (currentTileIndex);
+
+		int sightRange = Mathf.RoundToInt( baseSightRange * visibilityModifier);
 
 		//get tiles in same row to display
 		for (int i = currentTileIndex - sightRange; i <= currentTileIndex + sightRange; i++) {
