@@ -55,7 +55,7 @@ public class TribeStatus : MonoBehaviour {
 	}
 
 	public void decrementFood() {
-		Debug.Log ("Food");
+		//Debug.Log ("Food");
 		//update total daily food req
 		tribeInfo.dailyFoodNeed = 0;
 		foreach (Tribesman t in tribeInfo.TribeMembers) {

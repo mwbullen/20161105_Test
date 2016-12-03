@@ -59,6 +59,7 @@ public class TribeMovement : MonoBehaviour {
 
 			if (targetTile.GetComponent<TileInfo> ().hasFood) {
 				gameObject.GetComponent<TribeStatus> ().tribeInfo.foodStorage += Mathf.RoundToInt( Random.Range (10f, 100f));
+				targetTile.GetComponent<TileInfo> ().hasFood = false;
 			}
 
 			gameControl.GetComponent<TurnManagement> ().finishMove ();

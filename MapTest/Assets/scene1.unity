@@ -925,7 +925,7 @@ MonoBehaviour:
   waterAdjacentBonus: 100
   mtnChanceBase: 1
   mtnAdjacentBonus: 75
-  treeChanceBase: 5
+  treeChanceBase: 8
   treeAdjacentBonus: 85
   openChanceBase: 100
   foodPrefab: {fileID: 1000014040890108, guid: ffbce95ca75de40d48bb6682ad963789, type: 2}
@@ -1002,7 +1002,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapInfo:
     mapSourceString: 
-    visibleTiles: 
     rowSize: 0
     numberRows: 0
   mapParentPrefab: {fileID: 130786, guid: 91a90682aea8e41db96c417d554dd507, type: 2}
