@@ -15,7 +15,9 @@ public class TribeDetailUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (tribeMember.Health < 0) {
+			GameObject.Destroy (gameObject);
+		}
 	}
 
 	public void updateDisplay() {
@@ -24,4 +26,6 @@ public class TribeDetailUI : MonoBehaviour {
 		ageText.GetComponent<UnityEngine.UI.Text> ().text = tribeMember.Age.ToString();
 
 	}
+
+
 }

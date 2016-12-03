@@ -9,6 +9,8 @@ TagManager:
   - Tribe
   - Character
   - Tile
+  - TribeUIPanel
+  - TribeDetailUI
   layers:
   - Default
   - TransparentFX
