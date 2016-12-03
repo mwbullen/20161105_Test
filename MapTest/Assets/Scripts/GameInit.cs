@@ -18,6 +18,8 @@ public class GameInit : MonoBehaviour {
 		gameObject.GetComponent<MapStatus> ().LoadorCreateMap ();
 
 		gameObject.GetComponent<GameInit> ().CreateTribe ();
+
+		gameObject.GetComponent<TurnManagement> ().updateUIInfo ();
 	}
 
 	// Update is called once per frame

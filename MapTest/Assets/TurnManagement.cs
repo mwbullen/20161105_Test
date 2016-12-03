@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class TurnManagement : MonoBehaviour {
-	
+	public GameObject tribeFoodStorageTxt;
+	GameObject tribe;
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +17,7 @@ public class TurnManagement : MonoBehaviour {
 
 	public void finishMove() {
 		//Debug.Log ("Finish Move");
-		GameObject tribe = GameObject.FindGameObjectWithTag ("Tribe");
+		tribe = GameObject.FindGameObjectWithTag ("Tribe");
 
 
 		tribe.GetComponent<TribeStatus> ().decrementFood();
@@ -28,6 +29,9 @@ public class TurnManagement : MonoBehaviour {
 	}
 
 	public void updateUIInfo() {
+
+		tribeFoodStorageTxt.GetComponent<UnityEngine.UI.Text> ().text = "Food storage: " + tribe.GetComponent<TribeStatus> ().tribeInfo.foodStorage;
+
 		foreach  (GameObject uiDetail in GameObject.FindGameObjectsWithTag("TribeDetailUI")){
 			uiDetail.GetComponent<TribeDetailUI> ().updateDisplay ();
 		}
