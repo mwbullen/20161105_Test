@@ -16,30 +16,32 @@ public class MapStatus : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		mapParentObject = GameObject.Instantiate (mapParentPrefab);
-
-	}
+		}
 
 	public void LoadorCreateMap() {
-			mapInfo = gameObject.GetComponent<SaveLoad> ().LoadSavedMapInfo();
+		mapParentObject = GameObject.Instantiate (mapParentPrefab);
 
-			if (mapInfo == null) {
-				MapGeneration mapGenCom = gameObject.GetComponent<MapGeneration> ();
+		mapInfo = gameObject.GetComponent<SaveLoad> ().LoadSavedMapInfo();
 
-				string newMapString = mapGenCom.createNewMapString();
-				Debug.Log ("new mapstring " + newMapString);
+		if (mapInfo == null) {//create new map
+			MapGeneration mapGenCom = gameObject.GetComponent<MapGeneration> ();
 
-				int rowSize = mapGenCom.rowSize;
-				int numRows = mapGenCom.numberRows;
+			string newMapString = mapGenCom.createNewMapString ();
+			//Debug.Log ("new mapstring " + newMapString);
 
-				mapInfo = new MapInfo (newMapString, rowSize, numRows);
+			int rowSize = mapGenCom.rowSize;
+			int numRows = mapGenCom.numberRows;
+
+			mapInfo = new MapInfo (newMapString, rowSize, numRows);
 
 			gameObject.GetComponent<SaveLoad> ().SaveMapInfo ();
-			}
+		} 
 	}
 
-	void showPreviousTiles() {
-
+	public void showPreviousTiles() {
+		foreach (int i in mapInfo.visibleTiles.Keys) {
+			DisplayTile(i);
+		}
 	}
 
 	public GameObject DisplayTile(int tileIndex) {
@@ -54,7 +56,6 @@ public class MapStatus : MonoBehaviour {
 		//if tile does not exist, display
 
 		char tileChar = mapInfo.getTileStringatPosition (tileIndex);
-
 
 		GameObject tilePrefab = null;
 
@@ -85,10 +86,10 @@ public class MapStatus : MonoBehaviour {
 			//if not previously shown, random gen food
 			if (!mapInfo.visibleTiles.Contains (tileIndex)) {
 				newTile.GetComponent<TileInfo> ().initFoodState ();
-				mapInfo.visibleTiles.Add (tileIndex);
+				mapInfo.visibleTiles.Add (tileIndex, null);
 
 				if (newTile.GetComponent<TileInfo> ().hasFood) {
-					mapInfo.foodTiles.Add (tileIndex);
+					mapInfo.foodTiles.Add (tileIndex, null);
 				}
 			} else { //load previous tile state
 				if (mapInfo.foodTiles.Contains(tileIndex)) {

@@ -16,6 +16,7 @@ public class GameInit : MonoBehaviour {
 
 	void startGame() {
 		gameObject.GetComponent<MapStatus> ().LoadorCreateMap ();
+		gameObject.GetComponent<MapStatus> ().showPreviousTiles ();
 
 		gameObject.GetComponent<GameInit> ().CreateTribe ();
 
