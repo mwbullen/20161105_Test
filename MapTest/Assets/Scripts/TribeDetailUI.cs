@@ -7,6 +7,7 @@ public class TribeDetailUI : MonoBehaviour {
 	public GameObject nameText;
 	public GameObject healthText;
 	public GameObject ageText;
+	public GameObject genderText;
 
 	// Use this for initialization
 	void Start () {
@@ -24,7 +25,7 @@ public class TribeDetailUI : MonoBehaviour {
 		nameText.GetComponent<UnityEngine.UI.Text> ().text = tribeMember.Name;
 		healthText.GetComponent<UnityEngine.UI.Text> ().text = tribeMember.Health.ToString();
 		ageText.GetComponent<UnityEngine.UI.Text> ().text = tribeMember.Age.ToString();
-
+		genderText.GetComponent<UnityEngine.UI.Text> ().text = tribeMember.Gender.ToString ();
 	}
 
 
