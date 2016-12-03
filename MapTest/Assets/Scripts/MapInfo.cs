@@ -6,7 +6,8 @@ using UnityEngine;
 public class MapInfo
 {
 	public string mapSourceString;
-	public System.Collections.Generic.List<int> visibleTiles;
+	public System.Collections.Generic.List<int> visibleTiles = new System.Collections.Generic.List<int> ();
+	public System.Collections.Generic.List<int> foodTiles = new System.Collections.Generic.List<int>();
 
 	public int rowSize;
 	public int numberRows;

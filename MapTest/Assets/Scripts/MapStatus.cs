@@ -37,7 +37,10 @@ public class MapStatus : MonoBehaviour {
 			gameObject.GetComponent<SaveLoad> ().SaveMapInfo ();
 			}
 	}
-	
+
+	void showPreviousTiles() {
+
+	}
 
 	public GameObject DisplayTile(int tileIndex) {
 		//check if tile exists
@@ -73,13 +76,27 @@ public class MapStatus : MonoBehaviour {
 		if (tilePrefab != null) {
 			//need to calculate coordinates
 			GameObject newTile = GameObject.Instantiate (tilePrefab);
-			newTile.GetComponent<TileInfo> ().TileID = tileIndex;
 
+			newTile.GetComponent<TileInfo> ().TileID = tileIndex;
 			newTile.transform.parent = mapParentObject.transform;
 			newTile.transform.Rotate (new Vector3 (90, 0, 0));
-
 			newTile.transform.position = new Vector3 (posx, 0, posz);
 
+			//if not previously shown, random gen food
+			if (!mapInfo.visibleTiles.Contains (tileIndex)) {
+				newTile.GetComponent<TileInfo> ().initFoodState ();
+				mapInfo.visibleTiles.Add (tileIndex);
+
+				if (newTile.GetComponent<TileInfo> ().hasFood) {
+					mapInfo.foodTiles.Add (tileIndex);
+				}
+			} else { //load previous tile state
+				if (mapInfo.foodTiles.Contains(tileIndex)) {
+					newTile.GetComponent<TileInfo> ().hasFood = true ;
+				}
+			}
+
+			//mapInfo.visibleTiles.Add (tileIndex);
 			return newTile;
 		}
 		return null;

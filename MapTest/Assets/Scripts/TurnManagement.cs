@@ -26,6 +26,7 @@ public class TurnManagement : MonoBehaviour {
 		updateUIInfo ();
 
 		gameObject.GetComponent<SaveLoad> ().Save ();
+		gameObject.GetComponent<SaveLoad> ().SaveMapInfo ();
 	}
 
 	public void updateUIInfo() {

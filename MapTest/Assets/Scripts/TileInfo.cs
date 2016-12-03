@@ -8,29 +8,54 @@ public class TileInfo : MonoBehaviour {
 	public bool Walkable;
 
 	public float foodChance = 0;
-	public bool hasFood = false;
+	//public bool hasFood = false;
+	bool hasFoodBool;
 
 	GameObject foodObject;
 
+	public bool hasFood{
+		get {return hasFoodBool; }
+		set {
+			hasFoodBool = value;
+			if (value) {
+				foodObject = createFoodObject ();
+
+			} else {//if food consumed, destroy food object
+				if (foodObject) {
+					GameObject.Destroy (foodObject);
+				}
+			}
+		}
+	}
+
 	// Use this for initialization
 	void Start () {
-		GameObject gameControl = GameObject.FindGameObjectWithTag ("GameControl");
 
+
+	}
+
+	public void initFoodState() {
 		float foodTest = Random.Range (0, 100);
 
 		if (foodTest < foodChance) {
 			//add food
 			hasFood = true;
 
-			GameObject foodPreFab = gameControl.GetComponent<MapGeneration> ().foodPrefab;
-
-			foodObject = GameObject.Instantiate (foodPreFab);
-			foodObject.transform.parent = gameObject.transform;
-			foodObject.transform.localPosition = new Vector3 (0, 0, 0);
 		}
-
 	}
+
+	GameObject createFoodObject() {
+		GameObject gameControl = GameObject.FindGameObjectWithTag ("GameControl");
+
+		GameObject foodPreFab = gameControl.GetComponent<MapGeneration> ().foodPrefab;
+
+		GameObject newFoodObject = GameObject.Instantiate (foodPreFab);
+		newFoodObject.transform.parent = gameObject.transform;
+		newFoodObject.transform.localPosition = new Vector3 (0, 0, 0);
 	
+		return newFoodObject;
+	}
+
 	// Update is called once per frame
 	void Update () {
 	
