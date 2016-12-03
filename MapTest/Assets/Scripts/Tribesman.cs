@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 [Serializable]
 public class Tribesman
@@ -17,10 +18,12 @@ public class Tribesman
 	{
 		Name = generateRandomName();
 
-		FoodperDay = 10f;
-		Health = 100f;
+
+		Health = UnityEngine.Random.Range (75, 125);
 
 		Age = UnityEngine.Random.Range (10, 50);
+
+		FoodperDay = UnityEngine.Random.Range (5, 15);
 
 		int genderRoll = UnityEngine.Random.Range (1, 3);
 

@@ -29,6 +29,7 @@ public class TurnManagement : MonoBehaviour {
 	}
 
 	public void updateUIInfo() {
+		tribe = GameObject.FindGameObjectWithTag ("Tribe");
 
 		tribeFoodStorageTxt.GetComponent<UnityEngine.UI.Text> ().text = "Food storage: " + tribe.GetComponent<TribeStatus> ().tribeInfo.foodStorage;
 
