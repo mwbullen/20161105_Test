@@ -203,5 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c236be739b2c842a30e84f8a0aec78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TileID: 0
+  TileID: 1
   Walkable: 1
+  foodChance: 20
+  hasFood: 0

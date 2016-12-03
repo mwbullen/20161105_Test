@@ -928,6 +928,7 @@ MonoBehaviour:
   treeChanceBase: 5
   treeAdjacentBonus: 85
   openChanceBase: 100
+  foodPrefab: {fileID: 1000014040890108, guid: ffbce95ca75de40d48bb6682ad963789, type: 2}
 --- !u!4 &1692179635
 Transform:
   m_ObjectHideFlags: 0

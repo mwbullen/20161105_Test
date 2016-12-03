@@ -19,6 +19,8 @@ public class MapGeneration : MonoBehaviour {
 
 	string mapString;
 
+	public GameObject foodPrefab;
+
 
 	//public ArrayList mapDefinition = new ArrayList();
 
