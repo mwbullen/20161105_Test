@@ -8,6 +8,7 @@ public class Tribesman
 	public int Age;
 
 	public float FoodperDay;
+	public float maxHealth;
 	public float Health;
 
 	public enum GenderType {Male, Female};
@@ -19,7 +20,8 @@ public class Tribesman
 		Name = generateRandomName();
 
 
-		Health = UnityEngine.Random.Range (75, 125);
+		maxHealth = UnityEngine.Random.Range (75, 125);
+		Health = maxHealth;
 
 		Age = UnityEngine.Random.Range (10, 50);
 

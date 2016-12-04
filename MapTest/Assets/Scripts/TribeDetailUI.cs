@@ -23,7 +23,7 @@ public class TribeDetailUI : MonoBehaviour {
 
 	public void updateDisplay() {
 		nameText.GetComponent<UnityEngine.UI.Text> ().text = tribeMember.Name;
-		healthText.GetComponent<UnityEngine.UI.Text> ().text = tribeMember.Health.ToString();
+		healthText.GetComponent<UnityEngine.UI.Text> ().text = tribeMember.Health.ToString() + " / " + tribeMember.maxHealth.ToString();
 		ageText.GetComponent<UnityEngine.UI.Text> ().text = tribeMember.Age.ToString();
 		genderText.GetComponent<UnityEngine.UI.Text> ().text = tribeMember.Gender.ToString ();
 	}

@@ -19,7 +19,6 @@ public class TurnManagement : MonoBehaviour {
 		//Debug.Log ("Finish Move");
 		tribe = GameObject.FindGameObjectWithTag ("Tribe");
 
-
 		tribe.GetComponent<TribeStatus> ().decrementFood();
 		//gameObject.GetComponent<TribeStatus> ().updateTribeDetailDisplay ();
 

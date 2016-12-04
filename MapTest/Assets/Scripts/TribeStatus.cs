@@ -65,16 +65,29 @@ public class TribeStatus : MonoBehaviour {
 			tribeInfo.dailyFoodNeed += t.FoodperDay;
 		}
 
+		//update based on tile modifier
+		tribeInfo.dailyFoodNeed *= gameControl.GetComponent<MapStatus>().DisplayTile(tribeInfo.currentTileID).GetComponent<TileInfo>().foodConsumptionModifier;
+
+
 		float newfoodStorage = tribeInfo.foodStorage - tribeInfo.dailyFoodNeed;
 
 		//food shortage
 		if (newfoodStorage < 0) {
 			tribeInfo.foodStorage = 0;
 			distributeFoodShortfall (newfoodStorage);
-		} else {
+		} else { //food surplus
 			tribeInfo.foodStorage = newfoodStorage;
+			healTribeMembers ();
 		}
 
+	}
+
+	void healTribeMembers() {
+		foreach (Tribesman tm in tribeInfo.TribeMembers) {
+			float newHealth = Mathf.Clamp (tm.Health + tm.FoodperDay, 0, tm.maxHealth);
+			tm.Health = newHealth;
+
+		}
 	}
 
 	void distributeFoodShortfall(float shortFall) {
