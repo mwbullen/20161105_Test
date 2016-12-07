@@ -10,7 +10,7 @@ public class TribeInfo : System.Object
 
 	public float dailyFoodNeed;
 	public float foodStorage ;
-	public float maxFoorStorage = 30;
+	public float maxFoodStorage = 30;
 
 	public int defaultTribeSize = 2;
 
@@ -19,9 +19,10 @@ public class TribeInfo : System.Object
 
 	public TribeInfo () //Used when creating new game
 	{
-		foodStorage = maxFoorStorage;
+		foodStorage = maxFoodStorage;
 		TribeMembers = createNewTribeMembers ();
 	}
+
 
 
 	List<Tribesman> createNewTribeMembers () {

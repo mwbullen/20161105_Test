@@ -46,6 +46,9 @@ public class TribeStatus : MonoBehaviour {
 		tribeUIPanel.BroadcastMessage ("updateDisplay");
 	}
 
+	public void addFood(int additionalFood) {
+		tribeInfo.foodStorage = Mathf.Clamp (tribeInfo.foodStorage + additionalFood, 0, tribeInfo.maxFoodStorage);
+	}
 
 	// Update is called once per frame
 	void Update () {
