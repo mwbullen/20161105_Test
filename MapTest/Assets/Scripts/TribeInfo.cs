@@ -9,15 +9,17 @@ public class TribeInfo : System.Object
 	public int currentTileID = 125;
 
 	public float dailyFoodNeed;
-	public float foodStorage =100;
+	public float foodStorage ;
+	public float maxFoorStorage = 30;
 
-	public int defaultTribeSize = 3;
+	public int defaultTribeSize = 2;
 
 	public List<Tribesman> TribeMembers;
 
 
 	public TribeInfo () //Used when creating new game
 	{
+		foodStorage = maxFoorStorage;
 		TribeMembers = createNewTribeMembers ();
 	}
 

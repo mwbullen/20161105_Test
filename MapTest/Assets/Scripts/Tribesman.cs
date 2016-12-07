@@ -25,7 +25,7 @@ public class Tribesman
 
 		Age = UnityEngine.Random.Range (10, 50);
 
-		FoodperDay = UnityEngine.Random.Range (5, 15);
+		FoodperDay = 2;
 
 		int genderRoll = UnityEngine.Random.Range (1, 3);
 
