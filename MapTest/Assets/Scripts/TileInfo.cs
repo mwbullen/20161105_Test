@@ -7,7 +7,8 @@ public class TileInfo : MonoBehaviour {
 
 	public bool Walkable;
 
-	public float foodChance = 0;
+	public float foodChance = 0f;
+	public float randomAttackChance =0f;
 	//public bool hasFood = false;
 	bool hasFoodBool;
 
