@@ -61,6 +61,29 @@ public class TribeStatus : MonoBehaviour {
 	}
 
 	public void decrementFood() {
+		foreach (Tribesman t in tribeInfo.TribeMembers) {
+			string logMessage;
+
+			if (tribeInfo.foodStorage > 0) {
+				if (t.FoodperDay <= tribeInfo.foodStorage) {//enough food for tribesman
+					tribeInfo.foodStorage -= t.FoodperDay;
+					logMessage = t.Name + " ate " + t.FoodperDay;
+
+				} else {//some food, but less than needed
+					logMessage = t.Name + " ate " + tribeInfo.foodStorage;
+
+				}
+
+			} else { //no food for tribesman
+				logMessage = t.Name + " went hungry";
+			}
+				gameControl.GetComponent<UILog> ().addLogMessage (logMessage);
+
+		}
+
+	}
+
+	public void decrementFood_old() {
 		//Debug.Log ("Food");
 		//update total daily food req
 		tribeInfo.dailyFoodNeed = 0;
