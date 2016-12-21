@@ -24,8 +24,18 @@ public class TurnManagement : MonoBehaviour {
 
 		updateUIInfo ();
 
+		checkTribeAlive ();
+
 		gameObject.GetComponent<SaveLoad> ().Save ();
 		gameObject.GetComponent<SaveLoad> ().SaveMapInfo ();
+	}
+
+	public void checkTribeAlive() {
+		tribe = GameObject.FindGameObjectWithTag ("Tribe");
+
+		if (tribe.GetComponent<TribeStatus>().tribeInfo.TribeMembers.Count == 0) { //no tribe members left
+			gameObject.GetComponent<GameInit> ().NewGame ();
+		}
 	}
 
 	public void updateUIInfo() {
